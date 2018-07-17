@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hellonode-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: hellonode
+    spec:
+      containers:
+      - name: hello-demo
+        image: tshaiman/hellonode
+        command: ["node", "server-db.js"]
+        ports:
+        - name: nodejs-port
+          containerPort: 3000
+        env:
+          - name: USER_SERVICE_HOST
+            value: user-service
