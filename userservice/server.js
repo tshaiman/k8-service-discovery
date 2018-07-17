@@ -5,6 +5,10 @@ app.get('/', function (req, res) {
   res.send('User Service V.1 ! ');
 });
 
-app.listen(3030, function () {
-  console.log('User Service listening on port 3030!');
+// server
+var server = app.listen(3030, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('User Service App listening at http://%s:%s', host, port);
 });
