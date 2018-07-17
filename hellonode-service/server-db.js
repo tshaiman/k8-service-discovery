@@ -1,10 +1,19 @@
 var express = require('express');
+const request = require('request');
+
 var app = express();
 var usr_svc = process.env.USER_SERVICE_HOST;
 
 
-app.get('/', function (req, res) {
-  res.send('Hello World! .connecting to ' + usr_svc);
+app.get('/', function (req, result) {
+  //res.send('Hello World! .connecting to ' + usr_svc);
+
+  request(usr_svc,  (err, res, body) => {
+    if (err) { 
+      return result.send(err); 
+    }
+    result.send(body);
+  });
 });
 
 // server
