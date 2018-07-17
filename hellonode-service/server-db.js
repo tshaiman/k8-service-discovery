@@ -7,7 +7,7 @@ var usr_svc = process.env.USER_SERVICE_HOST;
 
 app.get('/', function (req, result) {
   console.log("about to send a request to the user service");
-  request("http://" + usr_svc,  (err, res, body) => {
+  request("http://" + usr_svc + ":3030",  (err, res, body) => {
     if (err) { 
       console.log("an error has occured " + err)
       return result.send("err"); 
