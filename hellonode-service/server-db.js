@@ -6,13 +6,14 @@ var usr_svc = process.env.USER_SERVICE_HOST;
 
 
 app.get('/', function (req, result) {
-  //res.send('Hello World! .connecting to ' + usr_svc);
-
-  request(usr_svc,  (err, res, body) => {
+  console.log("about to send a request to the user service");
+  request("http://" + usr_svc,  (err, res, body) => {
     if (err) { 
-      return result.send(err); 
+      console.log("an error has occured " + err)
+      return result.send("err"); 
     }
-    result.send(body);
+    console.log("the body is " + res.body)
+    result.send(res.body);
   });
 });
 
@@ -21,5 +22,5 @@ var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log('Demp App listening at http://%s:%s', host, port);
+  console.log('Demo App V3 listening at http://%s:%s', host, port);
 });
