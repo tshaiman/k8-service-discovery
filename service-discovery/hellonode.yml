@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: hello-demo
-        image: tshaiman/hellonode
+        image: tshaiman/hello-service
         command: ["node", "server-db.js"]
         ports:
         - name: nodejs-port
